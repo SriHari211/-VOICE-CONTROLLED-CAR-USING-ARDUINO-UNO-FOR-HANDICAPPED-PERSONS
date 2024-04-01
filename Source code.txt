@@ -1,0 +1,102 @@
+// Pin Definitions
+const int enA = 9;    // Enable pin for motor A
+const int in1 = 8;    // Input pin 1 for motor A
+const int in2 = 7;    // Input pin 2 for motor A
+const int enB = 10;   // Enable pin for motor B
+const int in3 = 6;    // Input pin 1 for motor B
+const int in4 = 5;    // Input pin 2 for motor B
+
+void setup() {
+  // Set the motor control pins as outputs
+  pinMode(enA, OUTPUT);
+  pinMode(in1, OUTPUT);
+  pinMode(in2, OUTPUT);
+  pinMode(enB, OUTPUT);
+  pinMode(in3, OUTPUT);
+  pinMode(in4, OUTPUT);
+}
+
+void loop() {
+  // Move the car forward
+  moveForward();
+  delay(2000);
+  
+  // Stop the car
+  stopCar();
+  delay(1000);
+  
+  // Move the car backward
+  moveBackward();
+  delay(2000);
+  
+  // Stop the car
+  stopCar();
+  delay(1000);
+  
+  // Turn the car left
+  turnLeft();
+  delay(2000);
+  
+  // Stop the car
+  stopCar();
+  delay(1000);
+  
+  // Turn the car right
+  turnRight();
+  delay(2000);
+  
+  // Stop the car
+  stopCar();
+  delay(1000);
+}
+
+// Function to move the car forward
+void moveForward() {
+  digitalWrite(in1, HIGH);
+  digitalWrite(in2, LOW);
+  digitalWrite(in3, HIGH);
+  digitalWrite(in4, LOW);
+  analogWrite(enA, 255);  // Set motor A speed
+  analogWrite(enB, 255);  // Set motor B speed
+}
+
+// Function to move the car backward
+void moveBackward() {
+  digitalWrite(in1, LOW);
+  digitalWrite(in2, HIGH);
+  digitalWrite(in3, LOW);
+  digitalWrite(in4, HIGH);
+  analogWrite(enA, 255);  // Set motor A speed
+  analogWrite(enB, 255);  // Set motor B speed
+}
+
+// Function to turn the car left
+void turnLeft() {
+  digitalWrite(in1, LOW);
+  digitalWrite(in2, HIGH);
+  digitalWrite(in3, HIGH);
+  digitalWrite(in4, LOW);
+  analogWrite(enA, 255);  // Set motor A speed
+  analogWrite(enB, 255);  // Set motor B speed
+}
+
+// Function to turn the car right
+void turnRight() {
+  digitalWrite(in1, HIGH);
+  digitalWrite(in2, LOW);
+  digitalWrite(in3, LOW);
+  digitalWrite(in4, HIGH);
+  analogWrite(enA, 255);  // Set motor A speed
+  analogWrite(enB, 255);  // Set motor B speed
+}
+
+// Function to stop the car
+void stopCar() {
+  digitalWrite(in1, LOW);
+  digitalWrite(in2, LOW);
+  digitalWrite(in3, LOW);
+  digitalWrite(in4, LOW);
+  analogWrite(enA, 0);    // Set motor A speed to 0
+  analogWrite(enB, 0);    // Set motor B speed to 0
+}
+
